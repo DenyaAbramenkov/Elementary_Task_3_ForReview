@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Elementary_Task_3
 {
-    class Triangle: ITriangle, IComparable<Triangle>
+    public class Triangle: ITriangle, IComparable<Triangle>
     {
         public string Name { get; set; }
         public double SideA { get; set; }
@@ -30,11 +30,11 @@ namespace Elementary_Task_3
     
             if (!double.TryParse(sideA, out double a) | !double.TryParse(sideB, out double b) | !double.TryParse(sideC, out double c))
             {
-                throw new Exception("All Side parametres should be positive numbers");
+                throw new ArgumentException("All Side parametres should be positive numbers");
             }
             if (new Triangle(name, a, b, c).TriangleValidator() == false)
             {
-                throw new Exception("There is no triangle with such sides");
+                throw new ArgumentException("There is no triangle with such sides");
             }
             return new Triangle(name, a, b, c);
         }
